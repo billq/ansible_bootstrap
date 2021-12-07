@@ -1,2 +1,2 @@
-# ansible_desktop
-Workstation configuration
+# ansible_bootstrap
+Workstation bootstrap configuration
