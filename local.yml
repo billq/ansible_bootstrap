@@ -23,6 +23,14 @@
     user:
       name: dt_admin
       system: yes
+      
+  - name: create log dir
+    file:
+      path: /var/log/dt_admin
+      state: directory
+      mode: '0755'
+      owner: dt_admin
+      group: dt_admin
 
   - name: set up sudoers dt_admin
     copy:
@@ -93,12 +101,12 @@
       name: "ansible pull reboot"
       user: dt_admin
       special_time: reboot
-      job: ansible-pull -U https://github.com/billq/ansible_desktop.git >/var/log/desktop_manager.log 2>&1
+      job: ansible-pull -U https://github.com/billq/ansible_desktop.git >/var/log/dt_admin/desktop_manager.log 2>&1
 
   - name: add ansible-pull - 10 minute
     cron:
       name: "ansible manage desktop"
       user: dt_admin
       minute: "*/10"
-      job: ansible-pull -U https://github.com/billq/ansible_desktop.git >/var/log/desktop_manager.log 2>&1
+      job: ansible-pull -U https://github.com/billq/ansible_desktop.git >/var/log/dt_admin/desktop_manager.log 2>&1
 
