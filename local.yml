@@ -18,7 +18,23 @@
       owner: root
       group: root
       mode: 664
-
+      
+  - name: install cert
+    copy:
+      src: files/ca-certificates.crt
+      dest: /etc/ssl/certs/ca-certificates.crt
+      owner: root
+      group: root
+      mode: 664
+      
+  - name: install GP
+    copy:
+      src: files/PanGPLinux-5.0.8-c6.tgz
+      dest: /root/PanGPLinux-5.0.8-c6.tgz
+      owner: root
+      group: root
+      mode: 664
+      
   - name: add ansible user
     user:
       name: dt_admin
